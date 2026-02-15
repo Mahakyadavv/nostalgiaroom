@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Virtual Doraemon Room</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+</head>
+<body>
+
+<a-scene>
+
+  <!-- Camera -->
+  <a-entity position="0 1.6 4">
+    <a-camera></a-camera>
+  </a-entity>
+
+  <!-- Floor -->
+  <a-plane rotation="-90 0 0" width="10" height="10" color="#cfd8dc"></a-plane>
+
+  <!-- Back wall -->
+  <a-plane position="0 2 -5" width="10" height="4" color="#ffffff"></a-plane>
+
+  <!-- Desk -->
+  <a-box position="0 0.5 -2" width="2" height="0.5" depth="1" color="#8d6e63"></a-box>
+
+  <!-- Drawer (Time Machine drawer) -->
+  <a-box id="drawer"
+         position="0 0.3 -1.5"
+         width="1.4"
+         height="0.25"
+         depth="0.6"
+         color="#5d4037"
+         animation__open="property: position; to: 0 0.3 -1.0; dur: 700; startEvents: openDrawer"
+         animation__close="property: position; to: 0 0.3 -1.5; dur: 700; startEvents: closeDrawer">
+  </a-box>
+
+  <!-- Drawer button -->
+  <a-sphere position="0 0.3 -1.1" radius="0.05" color="yellow"
+    onclick="
+      if(this.opened){
+        document.querySelector('#drawer').emit('closeDrawer');
+        this.opened=false;
+      }else{
+        document.querySelector('#drawer').emit('openDrawer');
+        this.opened=true;
+      }
+    ">
+  </a-sphere>
+
+  <!-- Anywhere Door -->
+  <a-box id="door"
+         position="3 1 -3"
+         width="1"
+         height="2"
+         depth="0.1"
+         color="#00bcd4"
+         animation__open="property: rotation; to: 0 -90 0; dur: 800; startEvents: openDoor"
+         animation__close="property: rotation; to: 0 0 0; dur: 800; startEvents: closeDoor">
+  </a-box>
+
+  <!-- Door handle -->
+  <a-sphere position="3.4 1 -2.95" radius="0.05" color="gold"
+    onclick="
+      if(this.opened){
+        document.querySelector('#door').emit('closeDoor');
+        this.opened=false;
+      }else{
+        document.querySelector('#door').emit('openDoor');
+        this.opened=true;
+      }
+    ">
+  </a-sphere>
+
+  <!-- Job portal / resume screen -->
+  <a-plane
+     position="-3 1.8 -3"
+     width="2.8"
+     height="1.6"
+     color="black">
+
+     <a-text
+       value="My Job Portal\nLinkedIn / Resume\nClick to open"
+       align="center"
+       position="0 0 0.01"
+       color="white"
+       width="2.5">
+     </a-text>
+
+  </a-plane>
+
+  <!-- Light -->
+  <a-light type="ambient" intensity="0.8"></a-light>
+  <a-light type="point" position="2 4 4" intensity="0.8"></a-light>
+
+</a-scene>
+
+<script>
+  // open your real profile when screen clicked
+  const screen = document.querySelector('a-plane');
+
+  screen.addEventListener('click', () => {
+    window.open("https://www.linkedin.com", "_blank");
+  });
+</script>
+
+</body>
+</html>
