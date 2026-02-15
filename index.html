@@ -2,47 +2,41 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"></script>
-    <title>Aesthetic Doraemon Room</title>
+    <title>Worldmark Pink Aesthetic Room</title>
   </head>
   <body>
     <a-scene cursor="rayOrigin: mouse">
       
-      <a-entity environment="preset: dream; dressingAmount: 0; skyType: gradient; groundColor: #f0e2d0; groundTexture: walkthru"></a-entity>
+      <a-sky color="#ffe4e1"></a-sky>
+      <a-light type="ambient" color="#ffb6c1" intensity="0.7"></a-light>
+      <a-light type="point" position="0 4 0" color="#ff007f" intensity="0.8"></a-light>
 
-      <a-box position="0 2 -5" width="10" height="4" depth="0.2" color="#fffaf0"></a-box> <a-box position="-5 2 0" width="0.2" height="4" depth="10" color="#fffaf0"></a-box> <a-entity id="door-hinge" position="-2.5 0 -4.8">
+      <a-entity position="0 0 -4">
+        <a-cylinder radius="0.15" height="2" color="#5d4037"></a-cylinder>
+        <a-sphere position="0 1.5 0" radius="1.2" color="#ff85a2" opacity="0.8"></a-sphere>
+        <a-sphere position="0.5 2 0.5" radius="0.8" color="#ffb6c1" opacity="0.9"></a-sphere>
+        <a-sphere position="-0.5 1.8 -0.3" radius="0.9" color="#f48fb1" opacity="0.8"></a-sphere>
+      </a-entity>
+
+      <a-entity id="door-hinge" position="-3.5 0 -3">
         <a-box id="door-panel" 
-               position="0.65 1.3 0.1" 
-               width="1.3" height="2.6" depth="0.15" 
-               color="#ff80ab"
-               material="roughness: 0.3"
-               animation="property: rotation; to: 0 -120 0; dur: 1500; easing: easeInOutQuad; startEvents: click">
-          <a-sphere position="0.5 0 0.1" radius="0.06" color="#ffd700"></a-sphere>
-        </a-box>
-        <a-box position="0.65 1.3 0" width="1.5" height="2.8" depth="0.1" color="#f15a92"></a-box>
+               position="0.6 1.25 0" 
+               width="1.2" height="2.5" depth="0.1" 
+               color="#ff1493"
+               animation="property: rotation; to: 0 -110 0; dur: 1200; startEvents: click">
+          <a-sphere position="0.4 0 0.1" radius="0.05" color="#ffd700"></a-sphere> </a-box>
+        <a-box position="0.6 1.25 -0.05" width="1.4" height="2.7" depth="0.05" color="#ad1457"></a-box>
       </a-entity>
 
-      <a-entity position="2 0 -4">
-        <a-box width="2.2" height="1.1" depth="1.2" color="#a1887f"></a-box>
-        <a-box id="drawer" position="0 0.5 0.4" width="0.7" height="0.25" depth="0.6" color="#8d6e63"
-               animation="property: position; to: 0 0.5 1; dur: 800; startEvents: click">
-           <a-light type="point" color="#00ffff" intensity="0" 
-                    animation="property: intensity; to: 1.5; dur: 500; startEvents: click"></a-light>
-        </a-box>
-        <a-cylinder position="-0.7 0.7 0" radius="0.05" height="0.3" color="#333"></a-cylinder>
-        <a-cone position="-0.7 0.9 0" radius-bottom="0.2" height="0.2" color="#fff"></a-cone>
+      <a-entity position="3 2 -3" rotation="0 -30 0">
+        <a-plane width="2.5" height="1.5" material="color: #fff; opacity: 0.2; transparent: true; roughness: 0"
+                 animation="property: position; to: 3 2.2 -3; dir: alternate; dur: 2000; loop: true">
+          <a-text value="MAHAK'S HUB" align="center" position="0 0.3 0.01" color="#ff007f" font="exo2bold"></a-text>
+          <a-text value="WebVR Creative Space" align="center" position="0 -0.2 0.01" scale="0.6" color="#333"></a-text>
+        </a-plane>
       </a-entity>
 
-      <a-entity position="0 2.5 -4.7" 
-                animation="property: position; to: 0 2.7 -4.7; dir: alternate; dur: 2000; loop: true; easing: easeInOutSine">
-         <a-plane width="1.8" height="1" color="#222" opacity="0.8" material="transparent: true">
-            <a-text value="MAHAK'S PORTAL" align="center" position="0 0.2 0" scale="0.6" font="exo2bold"></a-text>
-            <a-text value="Placement Coordinator" align="center" position="0 -0.2 0" scale="0.4"></a-text>
-         </a-plane>
-      </a-entity>
-
-      <a-light type="ambient" color="#fff" intensity="0.5"></a-light>
-      <a-light type="point" position="0 4 0" intensity="0.4" distance="10"></a-light>
+      <a-plane rotation="-90 0 0" width="50" height="50" color="#fce4ec" material="roughness: 0.1; metalness: 0.2"></a-plane>
 
     </a-scene>
   </body>
